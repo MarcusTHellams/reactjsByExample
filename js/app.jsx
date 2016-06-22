@@ -1,35 +1,54 @@
 
-var App = React.createClass({
+var Heading = React.createClass({
+	render: function(){
+		return (<th>{this.props.heading}</th>)
+	}
+});
+
+var Row = React.createClass({
+	render: function(){
+		return (<tr>
+					<td>{this.props.changeSet.when}</td>
+					<td>{this.props.changeSet.who}</td>
+					<td>{this.props.changeSet.description}</td>
+			</tr>)
+	}
+});
+
+var Headings = React.createClass({
+
 	render: function(){
 
-		console.log(this.props);
-
-		
 		var headings = this.props.headings.map(function(heading){
-			return <th>{heading}</th>
+			return(<Heading heading={heading} />)
 		});
+		return (<thead><tr>{headings}</tr></thead>)
+	}
+});
 
-		var rows = this.props.data.map(function(row){
-			return <tr>
-				<td>{row.when}</td>
-				<td>{row.who}</td>
-				<td>{row.description}</td>
-			</tr>
+
+var Rows = React.createClass({
+
+	render: function(){
+
+		var rows = this.props.changeSets.map(function(changeSet){
+			return(<Row changeSet={changeSet} />)
 		});
+		return <tbody>{rows}</tbody>
+	}
+});
+
+var App = React.createClass({
+	render: function(){
+		
 		return  <div>
 		<h1>{this.props.title}</h1>
 		
-				<table className="table table-bordered">
-							<thead>
-								<tr>
-									{headings}
-								</tr>
-							</thead>
-							<tbody>
-								{rows}
-							</tbody>
-					</table>
-					</div>
+		<table className="table table-bordered">
+					<Headings headings={this.props.headings} />
+					<Rows changeSets={this.props.changeSets} />
+			</table>
+			</div>
 	}
 });
 
@@ -51,4 +70,4 @@ var dat = [{ "when": "2 minutes ago",
 
 var title = 'Recent Changes';
 
-ReactDOM.render(<App data={dat} headings={head} title={title} />, document.getElementById('app'));
+ReactDOM.render(<App changeSets={dat} headings={head} title={title} />, document.getElementById('app'));
