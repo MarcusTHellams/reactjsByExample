@@ -77,4 +77,7 @@ var dat = [{ "when": "2 minutes ago",
 
 var title = 'Recent Changes';
 
-ReactDOM.render(<App changeSets={dat} headings={head} title={title} />, document.getElementById('app'));
+var props = {changeSets:dat, headings: head, title: title};
+
+ReactDOM.render(<App {...props} headings = {['Updated at', 'Author', 'Change']}/>, document.getElementById('app'));
+
