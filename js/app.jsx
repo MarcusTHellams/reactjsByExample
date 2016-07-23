@@ -61,6 +61,11 @@ var App = React.createClass({
 	    	}
 	    }
 	},
+	getDefaultProps: function() {
+	    return {
+	         headings:  ['When happened', 'Who did it', 'What they change']
+	    };
+	},
 	render: function(){
 		
 		return <RecentChangesTable>
@@ -91,5 +96,5 @@ var title = 'Recent Changes';
 
 var props = {changeSets:dat, headings: head, title: title};
 
-ReactDOM.render(<App {...props} headings = {['Updated at', 'Author', 'Change']}/>, document.getElementById('app'));
+ReactDOM.render(<App changeSets={dat} />, document.getElementById('app'));
 
