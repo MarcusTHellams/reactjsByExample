@@ -10,7 +10,7 @@ var RecentChangesTable = React.createClass({
 				{this.props.children}
 			</table>
 		</div>
-		
+
 }});
 
 
@@ -62,6 +62,14 @@ var App = React.createClass({
 	  changeSets: React.PropTypes.array,
 	  author: React.PropTypes.string.isRequired  
 	},*/
+	getInitialState: function() {
+	    return {
+	         changeSets:[]
+	    };
+	},
+	handleEvent: function(data){
+		this.setState({changeSets: data.changeSets});
+	},
 	propTypes: {
 	    headings: function(props, propName, componentName){
 	    	if(propName === 'headings'){
@@ -75,7 +83,7 @@ var App = React.createClass({
 	    };
 	},
 	render: function(){
-		
+		console.log(this.state.changeSets);
 		return <RecentChangesTable>
 				<RecentChangesTable.Headings headings={this.props.headings} />
 				<RecentChangesTable.Rows changeSets={this.props.changeSets} />
