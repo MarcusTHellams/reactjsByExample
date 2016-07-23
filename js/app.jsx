@@ -49,6 +49,18 @@ RecentChangesTable.Rows = React.createClass({
 
 
 var App = React.createClass({
+	/*propTypes: {
+	  headings: React.PropTypes.array,
+	  changeSets: React.PropTypes.array,
+	  author: React.PropTypes.string.isRequired  
+	},*/
+	propTypes: {
+	    headings: function(props, propName, componentName){
+	    	if(propName === 'headings'){
+	    		return Error('Failed Validation');
+	    	}
+	    }
+	},
 	render: function(){
 		
 		return <RecentChangesTable>
