@@ -2,7 +2,15 @@ var RecentChangesTable = React.createClass({
 
 	render: function(){
 
-		return <table className="table table-bordered">{this.props.children}</table>
+		return <div>
+			<h1>
+				Recent Changes 
+			</h1>
+			<table className="table table-bordered">
+				{this.props.children}
+			</table>
+		</div>
+		
 }});
 
 
