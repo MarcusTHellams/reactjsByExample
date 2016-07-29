@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/MarcusTHellams/reactjsByExample/issues"
   },
-  "homepage": "https://github.com/MarcusTHellams/reactjsByExample#readme"
+  "homepage": "https://github.com/MarcusTHellams/reactjsByExample#readme",
+  "devDependencies": {
+    "connect-livereload": "^0.5.4",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-watch": "^1.0.0"
+  }
 }
